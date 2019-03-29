@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Courtney | Pychic Game</title>
+</head>
+
+<body>
+<h1>The Psychic Game</h1>
+  <div>
+    <p id="directions-text">Guess what letter I'm thinking of...</p>
+    <p id="userchoice-text"></p>
+    <p id="computerchoice-text"></p>
+    <p id="wins-text">Wins: </p>
+    <p id="losses-text">Losses: </p>
+    <p id="ties-text">Ties: </p>
+    <p id="guesses-text">Guesses Left: </p>
+  </div>
+
+  <script type="text/javascript">
+    // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+    var computerChoices = ["a", "e", "i", "o", "u"];
+
+    // Creating variables to hold the number of wins, losses, and ties. They start at 0.
+    var wins = 0;
+    var losses = 0;
+    var ties = 0;
+    var guesses = 5;
+
+    // Create variables that hold references to the places in the HTML where we want to display things.
+    var directionsText = document.getElementById("directions-text");
+    var userChoiceText = document.getElementById("userchoice-text");
+    var computerChoiceText = document.getElementById("computerchoice-text");
+    var winsText = document.getElementById("wins-text");
+    var lossesText = document.getElementById("losses-text");
+    var tiesText = document.getElementById("ties-text");
+    var guesesText = document.getElementById("guesses-text");
+
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function(event) {
+
+      // Determines which key was pressed.
+      var userGuess = event.key;
+
+      // Randomly chooses a choice from the options array. This is the Computer's guess.
+      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+      // Only run the following code block if the user presses the vowel letters.
+        if ((userGuess === "a") || (userGuess === "e") || (userGuess === "i") || (userGuess === "o") || (userGuess === "u"));
+        
+        // If we choose rock and the computer guesses scissors, increment our wins variable.
+        if ((userGuess === "") && (computerGuess === "a")) {
+          wins++;
+        }
+
+        // If we choose rock and the computer guesses paper, increment our losses variable.
+        if ((userGuess === "p") && (computerGuess === "e")) {
+          losses++;
+        }
+
+        // If we choose scissors and the computer guesses rock, increment our losses variable.
+        if ((userGuess === "w") && (computerGuess === "i")) {
+          losses++;
+        }
+
+        // If we choose scissors and the computer guesses paper, increment our wins variable.
+        if ((userGuess === "o") && (computerGuess === "o")) {
+          wins++;
+        }
+
+        // If we choose paper and the computer guesses rock, increment our wins variable.
+        if ((userGuess === "u") && (computerGuess === "u")) {
+          wins++;
+        }
+
+        // If we choose the same thing as the computer, increment our ties variable.
+        if (userGuess === computerGuess) {
+          ties++;
+        }
+
+        // Hide the directions
+        directionsText.textContent = "";
+
+        // Display the user and computer guesses, and wins/losses/ties.
+        userChoiceText.textContent = "You Chose: " + userGuess;
+        computerChoiceText.textContent = "The Computer Chose: " + computerGuess;
+        winsText.textContent = "Wins: " + wins;
+        lossesText.textContent = "Losses: " + losses;
+        tiesText.textContent = "Ties: " + ties;
+        guessesText.textContent = "Guesses Left" + guessesText;
+      }
+
+</script>
+</body>
+</html>

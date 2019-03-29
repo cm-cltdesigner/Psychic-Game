@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+    <title>The Psychic Game | Courtney</title>
+
+</head>
+
+<body>
+    <div class="container text-center push">
+        <div class="col">
+            <img src="./assets/images/ball.gif" width="250" height="250" /><br>
+            <div class="card-body">
+                <p class="card-text">
+                    <div id="game">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <h1>The Psychic Game</h1><br>
+                                <h4>Guess What Letter I'm Thinking...</h4>
+                                <p id='computer'></p>
+                                <p id='user'></p>
+                                <p id='wins'></p>
+                                <p id='losses'></p>
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+
+
+        <script>
+            var wins = 0
+            var losses = 0
+            var chances = 9
+            var computerChoices = ["a", "e", "i", "o", "u"]
+
+            var winsText = document.getElementById("wins")
+            var lossesText = document.getElementById("losses")
+            var computerText = document.getElementById("computer")
+            var userText = document.getElementById("user")
+
+            document.onkeyup = function (event) {
+                if (chances > 0) {
+                    var userGuess = event.key
+                    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)]
+
+                    if (userGuess === computerGuess) {
+                        wins++
+                        chances = 9
+                    } else {
+                        chances--
+                    }
+
+
+                    winsText.textContent = 'Wins: ' + wins
+                    lossesText.textContent = 'Losses: ' + losses
+                    computerText.textContent = 'Psychics Guesses: ' + computerGuess + '.'
+                    userText.textContent = 'Your Guesses: ' + userGuess + '.'
+
+                } else {
+                    losses++
+                    chances = 9
+                }
+
+
+            }
+        </script>
+
+        <footer class="footer">
+                <p>Powered By: GitCreativ LLC.&copy; | 2019</p>
+            </div>
+        </footer>
+</body>
+
+</html>
